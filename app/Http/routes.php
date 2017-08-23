@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/uppercase/{word}', function ($word) {
-    return strtoupper($word);
+    $data['word'] = $word;
+    $data['upper'] = strtoupper($word);
+    return view('uppercase', $data);
 });
 
 Route::get('/increment/{number}', function ($number){
