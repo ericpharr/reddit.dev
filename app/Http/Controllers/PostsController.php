@@ -17,10 +17,10 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts = \App\Models\Post::all();
+        $posts = \App\Models\Post::paginate(2);
         $data['posts'] = $posts;
 
-        return view('posts.index', $data);
+        return view('posts.index')->with($data);
 
     }
 
@@ -45,6 +45,7 @@ class PostsController extends Controller
     {
         //
         // dd($request->all());
+    	$this->validate($request, \App\Models\Post::$rules);
 
         $post = new \App\Models\Post();
         $post->title = $request->title;
