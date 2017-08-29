@@ -13,5 +13,5 @@
 	<div class="container card text-center">
 		<p class='card-text'>{!! $posts->render()!!}</p>
 	</div>
-
+	
 @stop
