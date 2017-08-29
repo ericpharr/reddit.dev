@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 
 class PostsController extends Controller
 {
@@ -17,7 +18,7 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts = \App\Models\Post::paginate(2);
+        $posts = Post::paginate(2);
         $data['posts'] = $posts;
 
         return view('posts.index')->with($data);
@@ -45,9 +46,9 @@ class PostsController extends Controller
     {
         //
         // dd($request->all());
-    	$this->validate($request, \App\Models\Post::$rules);
+    	$this->validate($request, Post::$rules);
 
-        $post = new \App\Models\Post();
+        $post = new Post();
         $post->title = $request->title;
         $post->url = $request->url;
         $post->content = $request->content;
@@ -66,7 +67,7 @@ class PostsController extends Controller
     public function show($id)
     {
         //
-        $post = \App\Models\Post::find($id);
+        $post = Post::find($id);
         $data['post'] = $post;
         return view('posts/show', $data);
     }
@@ -94,7 +95,7 @@ class PostsController extends Controller
     {
         //
         // dd($request->all());
-        $post = \App\Models\Post::find($id);
+        $post = Post::find($id);
         $post->title = $request->title;
         $post->url = $request->url;
         $post->content = $request->content;
@@ -113,7 +114,7 @@ class PostsController extends Controller
     {
         //
         // dd($request);
-        $post = \App\Models\Post::find($id);
+        $post = Post::find($id);
         $post->delete();
 
         return \Redirect::action('PostsController@index');
