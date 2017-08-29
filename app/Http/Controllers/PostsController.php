@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Log;
 
 class PostsController extends Controller
 {
@@ -55,6 +56,8 @@ class PostsController extends Controller
         $post->created_by = 1;
         $post->save();
 
+        Log::info("Here's some useful info");
+
         return \Redirect::action('PostsController@index');
     }
 
@@ -67,7 +70,7 @@ class PostsController extends Controller
     public function show($id)
     {
         //
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $data['post'] = $post;
         return view('posts/show', $data);
     }
@@ -95,7 +98,7 @@ class PostsController extends Controller
     {
         //
         // dd($request->all());
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->title = $request->title;
         $post->url = $request->url;
         $post->content = $request->content;
@@ -114,7 +117,7 @@ class PostsController extends Controller
     {
         //
         // dd($request);
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->delete();
 
         return \Redirect::action('PostsController@index');
