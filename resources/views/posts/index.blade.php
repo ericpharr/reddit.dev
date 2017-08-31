@@ -6,6 +6,7 @@
 			<h3 class='card-title'><a href="{{ $post->url }}">{{ $post->title}}</a></h3>
 			{{-- <a href="{{ $post->url }}">{{ $post->url }}</a> --}}
 			<p> {{ $post->content }}</p>
+			<p>Posted by: {{ $post->user->name }}</p>
 			<p> Posted on: {{ $post->created_at}} </p>
 			{{-- <p> {{ $post->created_by}}</p> --}}
 		</div>
