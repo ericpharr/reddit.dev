@@ -11,31 +11,31 @@
 |
 */
 
-Route::get('/', 'PostsController@index');
-
-Route::get('/uppercase/{word}', 'HomeController@uppercase');
-
-Route::get('/lowercase/{word}', 'HomeController@lowercase');
-
-Route::get('/increment/{number?}', 'HomeController@increment');
-
-Route::get('/resettozero', 'HomeController@resetToZero');
-
-Route::get('/add/{a}/{b}', function ($a, $b) {
-    if (is_numeric($a) && is_numeric($b)) {
-        return $a + $b;
-    } else {
-        return "202 + 202 = <h1>404</h1>";
-    }
-
-});
-
-Route::get('roll-dice/{guess}', function($guess){
-    $data['guess'] = $guess;
-    $data['roll'] = rand(1,6);
-
-    return view('roll-dice', $data);
-});
+// Route::get('/', 'PostsController@index');
+//
+// Route::get('/uppercase/{word}', 'HomeController@uppercase');
+//
+// Route::get('/lowercase/{word}', 'HomeController@lowercase');
+//
+// Route::get('/increment/{number?}', 'HomeController@increment');
+//
+// Route::get('/resettozero', 'HomeController@resetToZero');
+//
+// Route::get('/add/{a}/{b}', function ($a, $b) {
+//     if (is_numeric($a) && is_numeric($b)) {
+//         return $a + $b;
+//     } else {
+//         return "202 + 202 = <h1>404</h1>";
+//     }
+//
+// });
+//
+// Route::get('roll-dice/{guess}', function($guess){
+//     $data['guess'] = $guess;
+//     $data['roll'] = rand(1,6);
+//
+//     return view('roll-dice', $data);
+// });
 
 Route::resource("posts", "PostsController");
 
