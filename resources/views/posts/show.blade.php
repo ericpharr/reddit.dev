@@ -5,5 +5,6 @@
 		<h3 class='card-title'>{{ $post->title}}</h3>
 		<a href="{{ $post->url }}">{{ $post->url }}</a>
 		<p> {{ $post->content }}</p>
+		<p> {{ $post->created_at}} </p>
 	</div>
 @stop
