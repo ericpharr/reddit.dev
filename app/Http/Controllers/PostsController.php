@@ -16,6 +16,15 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth', ['except' => [
+        	'show', 'index'
+        ]]);
+
+     }
+
     public function index()
     {
         //
@@ -53,7 +62,7 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->url = $request->url;
         $post->content = $request->content;
-        $post->created_by = 1;
+        $post->created_by = Auth::id();
         $post->save();
 
         Log::info("Here's some useful info");
